@@ -1,0 +1,2456 @@
+{
+	"info": {
+		"_postman_id": "5bc1936d-0c80-4731-bc2f-728b4312e1e6",
+		"name": "Helpwise API Documentation",
+		"description": "The Helpwise provides many APIs that you can use to integrate with third party softwares and you can easily build the automation though the REST API. If you would like to add some API endpoint which can be useful or have some question regarding the Helpwise Developer APIs then you can email to [dev@helpwise.io](https://mail:dev@helpwise.io) email.\n\n## **Getting started guide**\n\n- You must use a valid API Key & API Secret to send requests to the API endpoints. You can get your API key from Helpwise's Settings Page \\[API Key Section\\] [integrations dashboard](https://app.helpwise.io/settings/api).\n- The API has [rate and usage limits](https://postman.postman.co/workspace/Collection-Templates~6311738d-2e70-441f-ae12-78caf078c5b7/collection/22517504-e9c28f47-1253-44af-a2f3-20dce4da1f18?ctx=documentation#rate-and-usage-limits).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`You can get your API_KEY and API_SECRET from the Helpwise settings page`\n\n[PAGE LINK](https://app.helpwise.io/settings/api) The Helpwise API uses your `API_KEY` and `API_SECRET` for authentication.\n\nHelpwise uses API keys for authentication. You can generate a Postman API key in the [API keys](https://app.helpwise.io/settings/api) section of your Postman account settings.\n\nYou must include an API key and API Secret in each request to the Postman API with the Basic auth header `Basic BASE_64(API_KEY:API_SECRET)`\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 100 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://helpwise.io).\n\nV0 Aut",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24989773"
+	},
+	"item": [
+		{
+			"name": "V1",
+			"item": [
+				{
+					"name": "Conversations",
+					"item": [
+						{
+							"name": "Action",
+							"item": [
+								{
+									"name": "Close",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ids\":[204388]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/conversations/action/close",
+										"description": "From this API endpoint you can close the Helpwise conversations\n\n`ids must be integer type`\n\n`ids array must be less then 100 length`"
+									},
+									"response": []
+								},
+								{
+									"name": "Move To Inbox",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ids\":[]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/conversations/action/moveToInbox",
+										"description": "From this API endpoint you can move to inbox Helpwise conversations\n\n`ids must be integer type`\n\n`ids array must be less then 100 length`"
+									},
+									"response": []
+								},
+								{
+									"name": "Spam",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ids\":[]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/conversations/action/spam",
+										"description": "From this API endpoint you can spam the Helpwise conversations\n\n`ids must be integer type`\n\n`ids array must be less then 100 length`"
+									},
+									"response": []
+								},
+								{
+									"name": "Trash",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ids\":[]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/conversations/action/trash",
+										"description": "From this API endpoint you can trash the Helpwise conversations\n\n`ids must be integer type`\n\n`ids array must be less then 100 length`"
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"ids\":[]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/conversations/action/delete",
+										"description": "From this API endpoint you can delete the Helpwise conversations\n\n`ids must be integer type`\n\n`ids array must be less then 100 length`"
+									},
+									"response": []
+								}
+							],
+							"description": "This folder has the all actions related endpoint which means you can perform the close, spam, trash, move to inbox, delete the `Helpwise conversation`"
+						},
+						{
+							"name": "List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/conversations?inboxIds[]=204568&labelId=14&limit=100&pageToken=PAGE_TOKEN",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"conversations"
+									],
+									"query": [
+										{
+											"key": "inboxIds[]",
+											"value": "204568"
+										},
+										{
+											"key": "labelId",
+											"value": "14"
+										},
+										{
+											"key": "limit",
+											"value": "100"
+										},
+										{
+											"key": "pageToken",
+											"value": "PAGE_TOKEN"
+										}
+									]
+								},
+								"description": "| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| inboxIds (required) | number array | mailbox id of your inbox |\n| labelId | number | 14-> All  <br>0-> Assigned  <br>10-> Unassigned  <br>11-> Starred  <br>9-> Snoozed  <br>2-> Draft  <br>1-> Sent  <br>7-> Closed  <br>8-> Spam  <br>5-> Trash  <br>6-> Scheduled |\n| pageToken | string | Page token will require in second request |\n| limit | number | limit of conversation |\n\nYou can use this endpoint, to get the all the conversation of multiple inboxes or single inbox."
+							},
+							"response": [
+								{
+									"name": "List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://apis.helpwise.io/conversations?inboxIds[]=204568&labelId=14&limit=100&pageToken=PAGE_TOKEN",
+											"protocol": "https",
+											"host": [
+												"apis",
+												"helpwise",
+												"io"
+											],
+											"path": [
+												"conversations"
+											],
+											"query": [
+												{
+													"key": "inboxIds[]",
+													"value": "204568"
+												},
+												{
+													"key": "labelId",
+													"value": "14"
+												},
+												{
+													"key": "limit",
+													"value": "100"
+												},
+												{
+													"key": "pageToken",
+													"value": "PAGE_TOKEN"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nextPageToken\": \"\",\n    \"threads\": [\n        {\n            \"id\": 51041533,\n            \"messageCount\": 0,\n            \"inboxType\": \"sms\",\n            \"messageProvider\": \"dialpad\",\n            \"tags\": [\n                {\n                    \"id\": 363939,\n                    \"name\": \"Black Friday Leads\",\n                    \"color\": \"#FF0000\",\n                    \"inboxId\": 204376,\n                    \"nestedName\": \"\"\n                }\n            ],\n            \"isRead\": true,\n            \"isStarred\": false,\n            \"hasDraft\": false,\n            \"isArchived\": false,\n            \"isDeleted\": false,\n            \"isSpam\": false,\n            \"isSnoozed\": false,\n            \"draftOnly\": false,\n            \"assignedTo\": {\n                \"id\": 222609,\n                \"firstname\": \"Rishabh\",\n                \"lastname\": \"Rawat\",\n                \"email\": \"rishabh@helpwise.io\",\n                \"avatarTag\": \"\\u003cspan class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(229,32%,64%)\\\"\\u003eRR\\u003c/span\\u003e\",\n                \"displayName\": \"Rishabh Rawat\"\n            },\n            \"snippetType\": 1,\n            \"snippet\": \"Hello Rishabh,\\nHow May I help you?\",\n            \"subject\": \"14156349606\",\n            \"attachments\": [],\n            \"inboxId\": 221217,\n            \"ticketNumber\": 51041533,\n            \"threadRealId\": \"14156349606\",\n            \"displayContact\": \"14156349606\",\n            \"date\": \"2024-02-07T11:50:36Z\"\n        },\n        {\n            \"id\": 51123504,\n            \"messageCount\": 1,\n            \"inboxType\": \"mail\",\n            \"tags\": [],\n            \"isRead\": true,\n            \"isStarred\": false,\n            \"hasDraft\": false,\n            \"isArchived\": false,\n            \"isDeleted\": false,\n            \"isSpam\": false,\n            \"isSnoozed\": false,\n            \"draftOnly\": false,\n            \"assignedTo\": {\n                \"id\": 222609,\n                \"firstname\": \"Rishabh\",\n                \"lastname\": \"Rawat\",\n                \"email\": \"rishabh@helpwise.io\",\n                \"avatarTag\": \"\\u003cspan class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(229,32%,64%)\\\"\\u003eRR\\u003c/span\\u003e\",\n                \"displayName\": \"Rishabh Rawat\"\n            },\n            \"snippetType\": 1,\n            \"snippet\": \"Hi there, How May I Help You?\",\n            \"subject\": \"Hi there, How May I Help You?\",\n            \"attachments\": [],\n            \"inboxId\": 221130,\n            \"ticketNumber\": 51123504,\n            \"threadRealId\": \"\\u003c345ba3a94b3c9dac3be4be0770076aa4@helpwisemail.com\\u003e\",\n            \"displayContact\": \"To:rishicentury@gmail.com\",\n            \"date\": \"2024-01-20T03:30:29Z\",\n            \"seenAt\": \"2024-01-20T09:06:43Z\"\n        },\n        {\n            \"id\": 51123507,\n            \"messageCount\": 1,\n            \"inboxType\": \"mail\",\n            \"tags\": [],\n            \"isRead\": true,\n            \"isStarred\": false,\n            \"hasDraft\": true,\n            \"isArchived\": false,\n            \"isDeleted\": false,\n            \"isSpam\": false,\n            \"isSnoozed\": false,\n            \"draftOnly\": false,\n            \"assignedTo\": {\n                \"id\": 222609,\n                \"firstname\": \"Rishabh\",\n                \"lastname\": \"Rawat\",\n                \"email\": \"rishabh@helpwise.io\",\n                \"avatarTag\": \"\\u003cspan class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(229,32%,64%)\\\"\\u003eRR\\u003c/span\\u003e\",\n                \"displayName\": \"Rishabh Rawat\"\n            },\n            \"snippetType\": 1,\n            \"snippet\": \"Thanks for purchasing the Helpwise subscription\",\n            \"subject\": \"Normal Send API\",\n            \"attachments\": [],\n            \"inboxId\": 221130,\n            \"ticketNumber\": 51123507,\n            \"threadRealId\": \"\\u003c9a5a6301b35aa9ed386bd7e4bfa83111@helpwisemail.com\\u003e\",\n            \"displayContact\": \"To:rishicentury@gmail.com\",\n            \"date\": \"2024-01-19T08:41:27Z\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/inboxes/227136/conversations/116851645?labelId=14",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inboxes",
+										"227136",
+										"conversations",
+										"116851645"
+									],
+									"query": [
+										{
+											"key": "labelId",
+											"value": "14"
+										}
+									]
+								},
+								"description": "You can use this API endpoint to get the messages of the conversation.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| InboxId (required) | number | inbox id of your Helpwise  <br>inbox |\n| labelId(optional) | number | 14-> All  <br>0-> Assigned  <br>10-> Unassigned  <br>11-> Starred  <br>9-> Snoozed  <br>2-> Draft  <br>1-> Sent  <br>7-> Closed  <br>8-> Spam  <br>5-> Trash  <br>6-> Scheduled |\n| conversationId(required) | number | conversation id of the inbox |\n| pageToken | string | 2023-06-26+11:06:54 page token require on second request |\n| limit | number | limit of messages |"
+							},
+							"response": [
+								{
+									"name": "GET",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://apis.helpwise.io/inboxes/227136/conversations/116851645?labelId=14",
+											"protocol": "https",
+											"host": [
+												"apis",
+												"helpwise",
+												"io"
+											],
+											"path": [
+												"inboxes",
+												"227136",
+												"conversations",
+												"116851645"
+											],
+											"query": [
+												{
+													"key": "labelId",
+													"value": "14"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Fri, 02 Feb 2024 12:25:15 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1156"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Rate-Limit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-Rate-Limit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-Rate-Limit-Reset",
+											"value": "3462"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 116851645,\n    \"inboxId\": 227136,\n    \"messagesCount\": 1,\n    \"pinnedNotes\": [],\n    \"drafts\": [],\n    \"currentAssignment\": null,\n    \"contacts\": [\n        {\n            \"id\": 10103029,\n            \"firstname\": \"David\",\n            \"lastname\": \"Warner\",\n            \"displayName\": \"David Warner\",\n            \"displayContact\": \"David Warner\",\n            \"emails\": [\n                \"david@amazon.co\"\n            ],\n            \"phones\": [],\n            \"isBlocked\": false,\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(78,32%,64%)\\\">HD</span>\",\n            \"threads\": [\n                {\n                    \"date\": \"2024-01-30T13:26:35Z\",\n                    \"subject\": \"ljadsblfhasbDFLHASBDLJFHBASDJKHFHDABF\",\n                    \"id\": 116851648,\n                    \"mailboxId\": 227136\n                },\n                {\n                    \"date\": \"2024-01-30T13:22:21Z\",\n                    \"subject\": \"test froala 123\",\n                    \"id\": 116851647,\n                    \"mailboxId\": 227136\n                },\n                {\n                    \"date\": \"2024-01-30T13:45:50Z\",\n                    \"subject\": \"shkdbfkhsdbfkhsd\",\n                    \"id\": 116851643,\n                    \"mailboxId\": 227136\n                },\n                {\n                    \"date\": \"2024-01-30T09:50:01Z\",\n                    \"subject\": \"jadfkjsdbflkjs testhsdf\",\n                    \"id\": 116851646,\n                    \"mailboxId\": 227136\n                },\n                {\n                    \"date\": \"2024-01-30T09:51:27Z\",\n                    \"subject\": \"kjasbd;kfjbasdlkhjfgb test\",\n                    \"id\": 116851645,\n                    \"mailboxId\": 227136\n                }\n            ],\n            \"notes\": [],\n            \"groups\": []\n        }\n    ],\n    \"nextPageToken\": \"1970-01-01 00:00:00\",\n    \"usersReadMap\": {\n        \"204767\": {\n            \"hasRead\": true,\n            \"readAt\": \"2024-02-02T12:24:50Z\"\n        }\n    },\n    \"tags\": [\n        {\n            \"id\": 483577,\n            \"name\": \"Priority\",\n            \"color\": \"#FF0000\",\n            \"inboxId\": 227136,\n            \"nestedName\": \"\"\n        }\n    ],\n    \"priority\": {\n        \"value\": \"choose\",\n        \"source\": \"automated\"\n    },\n    \"isArchived\": false,\n    \"isDeleted\": false,\n    \"isSnoozed\": false,\n    \"isSpam\": false,\n    \"isStarred\": false,\n    \"subject\": \"Apple Sale Live Now!\",\n    \"displaySubject\": \"Apple Sale Live Now!\",\n    \"snippet\": \"Get iPhone 30% Off\",\n    \"ticketNumber\": 116851645,\n    \"items\": [\n        {\n            \"data\": {\n                \"id\": 168573512,\n                \"inboxId\": 227136,\n                \"threadId\": 116851645,\n                \"direction\": 0,\n                \"createdAt\": \"2024-01-30T09:51:27Z\",\n                \"deliveryStatus\": \"\",\n                \"body\": \"\",\n                \"cc\": {},\n                \"bcc\": {},\n                \"to\": {\n                    \"help@helpwise.io\": \"Helpwise\"\n                },\n                \"from\": {\n                    \"david@amazon.co\": \"David Warner\"\n                },\n                \"displaySubject\": \"Chrome new update\",\n                \"subject\": \"Chrome new update\",\n                \"isSpam\": false,\n                \"date\": \"2024-01-30T09:51:27Z\",\n                \"attachments\": [],\n                \"labelId\": 0,\n                \"replyTo\": {},\n                \"replyAll\": false,\n                \"snippet\": \"jakhbsfkjhabsf test\",\n                \"haveMime\": true,\n                \"sentStatusCode\": {\n                    \"title\": \"success\",\n                    \"msg\": \"Message sent successfully\",\n                    \"allowResend\": false\n                },\n                \"importance\": \"\",\n                \"renderId\": \"22760-18d59c80b2a911e1\",\n                \"spamScore\": 0,\n                \"attachmentCount\": 0,\n                \"isPlainText\": false,\n                \"isSanitized\": true,\n                \"haveStrippedHtml\": false,\n                \"content\": {\n                    \"html\": {\n                        \"type\": \"remote\"\n                    },\n                    \"text\": {\n                        \"type\": \"remote\"\n                    }\n                },\n                \"owner\": null,\n                \"shared\": false,\n                \"messageId\": \"<CANF6=gcXu-J=u6=z8aB5kYFSARA-G2hkWjYp=-P-XVNAe-F6Ww@mail.gmail.com>\"\n            },\n            \"type\": \"email\",\n            \"timestamp\": 1706608287\n        }\n    ],\n    \"unreadCount\": 0,\n    \"snippetType\": 1,\n    \"inboxType\": \"mail\"\n}"
+								}
+							]
+						}
+					],
+					"description": "All the conversations related endpoint is listed here where you can perform action( close, spam, trash, move to inbox, delete) on the conversation, get the conversations emails from conversation id and you can also get the inbox's conversations with pagination."
+				},
+				{
+					"name": "Send Message",
+					"item": [
+						{
+							"name": "SMS",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256785,\n    \"hash\":\"h7hfjk8khjl99kngq\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/smsWhatsApp/sendMsg",
+								"description": "You can use this endpoint to send SMS to your customers.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| InboxId (required) | number | inbox id of your Helpwise  <br>inbox |\n| body(required) | string | message body |\n| clientNumber(required) | string | your customer's number |\n| hash(optional) | string | you can use this hash when, you are working with parallelism which means you can make your own API identiy from this hash |\n| action(optional) | object {'assignTo':0,'name':'unassign'} //close, spam, trash, moveToInbox | you can use this to unassign, close, spam, trash and movetoInbox conversation along with send SMS |"
+							},
+							"response": [
+								{
+									"name": "Send SMS",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256785,\n    \"hash\":\"h7hfjk8khjl99kngq\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://apis.helpwise.io/smsWhatsApp/sendMsg"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"message\": \"Message sent successfully!\",\n    \"data\": {\n        \"client_number\": \"14156349606\",\n        \"hw_number\": \"17377872107\",\n        \"message_time\": \"2024-02-07 11:50:36\",\n        \"direction\": \"outbound\",\n        \"delivery_status\": \"delivered\",\n        \"segments\": 1,\n        \"twilio_cost\": null,\n        \"body\": \"Hello Rishabh,\\nHow May I help you?\",\n        \"mms_status\": 0,\n        \"type\": 3,\n        \"price_unit\": \"\",\n        \"sent_by\": {\n            \"id\": 18233,\n            \"firstname\": \"Rishabh\",\n            \"lastname\": \"Rawat\",\n            \"email\": \"rishabh@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(62,32%,64%)\\\">RR</span>\",\n            \"avatarUrl\": \"\"\n        },\n        \"attachments\": [],\n        \"randomMsgID\": \"\",\n        \"univId\": 0,\n        \"id\": 2241589\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "WhatsApp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256785,\n    \"template\":{\n        \"templateId\":245670,\n        \"templateVariables\":[\"Rishabh\",\"112233\",\"Shipping\"]\n    },\n    \"hash\":\"h7hfjk8khjl99kngq\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/smsWhatsApp/sendMsg",
+								"description": "You can use this endpoint to send WhatsApp message to your customers.\n\nYou can get the templates from this endpoint. [Click Here](https://helpwisedev.postman.co/workspace/Helpwise~2e84d0c2-93bd-47ff-8bae-1d2280e5fab7/request/29744652-0964c927-5e4e-4f70-aaa7-e9f212484020?ctx=documentation)\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| InboxId (required) | number | inbox id of your Helpwise  <br>inbox |\n| body(required) | string | message body |\n| clientNumber(required) | string | your customer's number |\n| template(optional) | object (please check below) | templateId-> int (required),  <br>templateVariables-> strings array(required) |\n| hash(optional) | string | you can use this hash when, you are working with parallelism which means you can make your own API identiy from this hash |\n| action(optional) | object {assignTo:0,name:\"unassign\"} //close, spam, trash, moveToInbox | you can use this to unassign, close, spam, trash and movetoInbox conversation along with send message |\n\nHere is the template object that you can use to send the template message from the API\n\n| **PARAMETERS** | **TYPE** | **DETAILS** |\n| --- | --- | --- |\n| templateId | number | helpwise template id |\n| templateVariables | string array | template variables which basically body variables |\n| headerVariables | string array | header variable which include image link, text and web link |\n| locationVariables | object | location object. eg:  <br>  <br>{  <br>\"latitude\":\"78.909787\",  <br>\"longitude\":\"55.99086\",  <br>\"name\":\"Taj Hotel\",  <br>\"address\":\"A-8, New York\"  <br>} |"
+							},
+							"response": [
+								{
+									"name": "Send WhatsApp",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256785,\n    \"template\":{\n        \"templateId\":245670,\n        \"templateVariables\":[\"Rishabh\",\"112233\",\"Shipping\"],\n    },\n    \"hash\":\"h7hfjk8khjl99kngq\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://apis.helpwise.io/smsWhatsApp/sendMsg"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"message\": \"Message sent successfully!\",\n    \"data\": {\n        \"client_number\": \"14156349606\",\n        \"hw_number\": \"17377872107\",\n        \"message_time\": \"2024-02-07 11:50:36\",\n        \"direction\": \"outbound\",\n        \"delivery_status\": \"delivered\",\n        \"segments\": 1,\n        \"twilio_cost\": null,\n        \"body\": \"Hello Rishabh,\\nHow May I help you?\",\n        \"mms_status\": 0,\n        \"type\": 3,\n        \"price_unit\": \"\",\n        \"sent_by\": {\n            \"id\": 18233,\n            \"firstname\": \"Rishabh\",\n            \"lastname\": \"Rawat\",\n            \"email\": \"rishabh@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(62,32%,64%)\\\">RR</span>\",\n            \"avatarUrl\": \"\"\n        },\n        \"attachments\": [],\n        \"randomMsgID\": \"\",\n        \"univId\": 0,\n        \"id\": 2241589\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Schedule SMS",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256785,\n    \"hash\":\"h7hfjk8khjl99kngq\",\n    \"sendAt\":\"2024-01-25T09:46:00.000Z\",\n    \"scheduleMsg\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/smsWhatsApp/sendMsg"
+							},
+							"response": [
+								{
+									"name": "Schedule SMS",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256785,\n    \"hash\":\"h7hfjk8khjl99kngq\",\n    \"sendAt\":\"2024-01-25T09:46:00.000Z\",\n    \"scheduleMsg\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://apis.helpwise.io/smsWhatsApp/sendMsg"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"message\": \"Message scheduled successfully!\",\n    \"data\": {\n        \"client_number\": \"14156349606\",\n        \"hw_number\": \"17377872107\",\n        \"message_time\": \"2024-02-07 11:50:36\",\n        \"direction\": \"outbound\",\n        \"delivery_status\": \"queued\",\n        \"segments\": 1,\n        \"twilio_cost\": null,\n        \"body\": \"Hello Rishabh,\\nHow May I help you?\",\n        \"mms_status\": 0,\n        \"type\": 3,\n        \"price_unit\": \"\",\n        \"sent_by\": {\n            \"id\": 18233,\n            \"firstname\": \"Rishabh\",\n            \"lastname\": \"Rawat\",\n            \"email\": \"rishabh@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(62,32%,64%)\\\">RR</span>\",\n            \"avatarUrl\": \"\"\n        },\n        \"attachments\": [],\n        \"randomMsgID\": \"\",\n        \"univId\": 0,\n        \"id\": 2241589\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Schedule WhatsApp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256786,\n    \"hash\":\"h7hfjk8khjl99kngq\",\n    \"sendAt\":\"2024-01-25T09:46:00.000Z\",\n    \"scheduleMsg\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/smsWhatsApp/sendMsg"
+							},
+							"response": [
+								{
+									"name": "Schedule WhatsApp",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"body\":\"Hello Rishabh, How may I help you?\",\n    \"clientNumber\":\"+918587805615\",\n    \"inboxId\":256786,\n    \"hash\":\"h7hfjk8khjl99kngq\",\n    \"sendAt\":\"2024-01-25T09:46:00.000Z\",\n    \"scheduleMsg\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://apis.helpwise.io/smsWhatsApp/sendMsg"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"message\": \"Message scheduled successfully!\",\n    \"data\": {\n        \"client_number\": \"14156349606\",\n        \"hw_number\": \"17377872107\",\n        \"message_time\": \"2024-02-07 11:50:36\",\n        \"direction\": \"outbound\",\n        \"delivery_status\": \"queued\",\n        \"segments\": 1,\n        \"twilio_cost\": null,\n        \"body\": \"Hello Rishabh,\\nHow May I help you?\",\n        \"mms_status\": 0,\n        \"type\": 3,\n        \"price_unit\": \"\",\n        \"sent_by\": {\n            \"id\": 18233,\n            \"firstname\": \"Rishabh\",\n            \"lastname\": \"Rawat\",\n            \"email\": \"rishabh@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(62,32%,64%)\\\">RR</span>\",\n            \"avatarUrl\": \"\"\n        },\n        \"attachments\": [],\n        \"randomMsgID\": \"\",\n        \"univId\": 0,\n        \"id\": 2241589\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "All the send message related endpoint listed here where you can send SMS, WhatsApp, Email, Facebook message, Instagram message."
+				},
+				{
+					"name": "Custom Fields",
+					"item": [
+						{
+							"name": "Inbox",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "{{baseUrl}}/customFields/inbox/221166",
+										"description": "You can use this endpoint to get all custom fields of inbox.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| inbox ld (required) | number | Inbox Id |"
+									},
+									"response": [
+										{
+											"name": "List",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": "https://apis.helpwise.io/customFields/inbox/221166"
+											},
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"name": "Content-Type",
+													"description": "",
+													"type": "text"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 204514,\n            \"name\": \"State\",\n            \"description\": \"State\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2022-10-07 07:40:44\",\n            \"updatedAt\": \"2022-10-07 07:40:44\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204522,\n            \"name\": \"Pincode\",\n            \"description\": \"Pincode\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2022-11-01 23:27:29\",\n            \"updatedAt\": \"2022-11-01 23:27:29\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204525,\n            \"name\": \"Policy ID\",\n            \"description\": \"Health insurance policy id\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2024-01-24 18:51:56\",\n            \"updatedAt\": \"2024-01-24 18:51:56\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204533,\n            \"name\": \"Flight PNR No\",\n            \"description\": \"Flight PNR No of Thai Airways\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2024-02-05 14:53:39\",\n            \"updatedAt\": \"2024-02-05 14:53:39\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        }\n    ],\n    \"message\": \"All custom fields fetched successfully\",\n    \"status\": \"success\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Update",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"hideIds\":[204513],\n    \"unHideIds\":[204522]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/customFields/inbox/221166",
+										"description": "You can use this endpoint to hide and unhide custom fields of specific inbox.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| inboxId (required) | number | inbox id |\n| hideIds |  | custom fields Ids |\n| unhideIds | numbers array | custom fields Ids |"
+									},
+									"response": [
+										{
+											"name": "Update",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hideIds\":[204514],\n    \"unHideIds\":[204522]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://apis.helpwise.io/customFields/inbox/221217"
+											},
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"name": "Content-Type",
+													"description": "",
+													"type": "text"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 204514,\n            \"name\": \"State\",\n            \"description\": \"State\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": true\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2022-10-07 07:40:44\",\n            \"updatedAt\": \"2022-10-07 07:40:44\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204522,\n            \"name\": \"Pincode\",\n            \"description\": \"Pincode\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2022-11-01 23:27:29\",\n            \"updatedAt\": \"2022-11-01 23:27:29\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204525,\n            \"name\": \"Policy ID\",\n            \"description\": \"Health insurance policy id\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2024-01-24 18:51:56\",\n            \"updatedAt\": \"2024-01-24 18:51:56\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204533,\n            \"name\": \"Flight PNR No\",\n            \"description\": \"Flight PNR No of Thai Airways\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2024-02-05 14:53:39\",\n            \"updatedAt\": \"2024-02-05 14:53:39\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        }\n    ],\n    \"message\": \"All custom fields fetched successfully\",\n    \"status\": \"success\"\n}"
+										}
+									]
+								}
+							],
+							"description": "Here is the all endpoint which is related to the inbox related custom fields, Like hide and unhide the custom fields according to inboxes level, show all custom fields related to inboxes."
+						},
+						{
+							"name": "List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/customFields",
+								"description": "You can use this endpoint to get all custom fields of your Helpwise account."
+							},
+							"response": [
+								{
+									"name": "List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "https://apis.helpwise.io/customFields"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 204514,\n            \"name\": \"State\",\n            \"description\": \"State\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2022-10-07 07:40:44\",\n            \"updatedAt\": \"2022-10-07 07:40:44\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204522,\n            \"name\": \"Pincode\",\n            \"description\": \"Pincode\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2022-11-01 23:27:29\",\n            \"updatedAt\": \"2022-11-01 23:27:29\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204525,\n            \"name\": \"Policy ID\",\n            \"description\": \"Health insurance policy id\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2024-01-24 18:51:56\",\n            \"updatedAt\": \"2024-01-24 18:51:56\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        },\n        {\n            \"id\": 204533,\n            \"name\": \"Flight PNR No\",\n            \"description\": \"Flight PNR No of Thai Airways\",\n            \"value\": \"\",\n            \"inboxIds\": [\n                {\n                    \"id\": 221217,\n                    \"name\": \"Dialpad Channel\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221218,\n                    \"name\": \"RingCentral Text\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221283,\n                    \"name\": \"Custom Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221284,\n                    \"name\": \"Twilio Calling Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221143,\n                    \"name\": \"Dialog360 Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221198,\n                    \"name\": \"Dev Outlook Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221138,\n                    \"name\": \"instagram comment\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221145,\n                    \"name\": \"WhatsApp Twilio Inbox\",\n                    \"isHidden\": false\n                },\n                {\n                    \"id\": 221253,\n                    \"name\": \"Demo Inbox\",\n                    \"isHidden\": false\n                }\n            ],\n            \"createdBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            },\n            \"createdAt\": \"2024-02-05 14:53:39\",\n            \"updatedAt\": \"2024-02-05 14:53:39\",\n            \"updatedBy\": {\n                \"id\": 222547,\n                \"firstname\": \"dev\",\n                \"lastname\": \"helpwise\",\n                \"email\": \"dev@helpwise.io\",\n                \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n                \"displayName\": \"dev helpwise\",\n                \"role\": 0,\n                \"settings\": null,\n                \"permissions\": null,\n                \"billing\": null,\n                \"accountId\": 222547\n            }\n        }\n    ],\n    \"message\": \"All custom fields fetched successfully\",\n    \"status\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{API_SECRET}}",
+										"username": "{{API_KEY}}"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/customFields/204514",
+								"description": "You can use this endpoint to get specific custom field from the custom field id.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| custom field id (required) | number | custom field id |"
+							},
+							"response": [
+								{
+									"name": "Get",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "https://apis.helpwise.io/customFields/204514"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 204522,\n        \"name\": \"Pincode\",\n        \"description\": \"Pincode\",\n        \"value\": \"\",\n        \"inboxIds\": [\n            {\n                \"id\": 221217,\n                \"name\": \"Dialpad Channel\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221218,\n                \"name\": \"RingCentral Text\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221283,\n                \"name\": \"Custom Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221284,\n                \"name\": \"Twilio Calling Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221143,\n                \"name\": \"Dialog360 Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221198,\n                \"name\": \"Dev Outlook Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221138,\n                \"name\": \"instagram comment\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221145,\n                \"name\": \"WhatsApp Twilio Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221253,\n                \"name\": \"Demo Inbox\",\n                \"isHidden\": false\n            }\n        ],\n        \"createdBy\": {\n            \"id\": 222547,\n            \"firstname\": \"dev\",\n            \"lastname\": \"helpwise\",\n            \"email\": \"dev@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n            \"displayName\": \"dev helpwise\",\n            \"role\": 0,\n            \"settings\": null,\n            \"permissions\": null,\n            \"billing\": null,\n            \"accountId\": 222547\n        },\n        \"createdAt\": \"2022-11-01 23:27:29\",\n        \"updatedAt\": \"2022-11-01 23:27:29\",\n        \"updatedBy\": {\n            \"id\": 222547,\n            \"firstname\": \"dev\",\n            \"lastname\": \"helpwise\",\n            \"email\": \"dev@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n            \"displayName\": \"dev helpwise\",\n            \"role\": 0,\n            \"settings\": null,\n            \"permissions\": null,\n            \"billing\": null,\n            \"accountId\": 222547\n        }\n    },\n    \"message\": \"Custom field fetched successfully\",\n    \"status\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Deleted",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "{{baseUrl}}/customFields/204514",
+								"description": "You can use this endpoin to delete the specific custom field.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| custom field id (required) | number | custom field id |"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Train PNR Code\",\n    \"description\":\"PNR code of Rajdhani Express\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/customFields/204514",
+								"description": "You can use this endpoint to update the existing custom field.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| name | string | name of a custom field |\n| description | string | description of custom field |"
+							},
+							"response": [
+								{
+									"name": "Update",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"name": "Content-Type",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\":\"Train PNR Code\",\n    \"description\":\"PNR code of Rajdhani Express\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://apis.helpwise.io/customFields/204514"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 204514,\n        \"name\": \"Train PNR Code\",\n        \"description\": \"PNR code of Rajdhani Express\",\n        \"value\": \"\",\n        \"inboxIds\": [\n             {\n                \"id\": 221217,\n                \"name\": \"Dialpad Channel\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221218,\n                \"name\": \"RingCentral Text\",\n                \"isHidden\": true\n            },\n            {\n                \"id\": 221283,\n                \"name\": \"Custom Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221284,\n                \"name\": \"Twilio Calling Inbox\",\n                \"isHidden\": true\n            },\n            {\n                \"id\": 221143,\n                \"name\": \"Dialog360 Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221198,\n                \"name\": \"Dev Outlook Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221138,\n                \"name\": \"instagram comment\",\n                \"isHidden\": true\n            },\n            {\n                \"id\": 221145,\n                \"name\": \"WhatsApp Twilio Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221253,\n                \"name\": \"Demo Inbox\",\n                \"isHidden\": false\n            }\n        ],\n        \"createdBy\": {\n            \"id\": 222547,\n            \"firstname\": \"dev\",\n            \"lastname\": \"helpwise\",\n            \"email\": \"dev@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n            \"displayName\": \"dev helpwise\",\n            \"role\": 0,\n            \"settings\": null,\n            \"permissions\": null,\n            \"billing\": null,\n            \"accountId\": 222547\n        },\n        \"createdAt\": \"2024-02-07 08:13:49\",\n        \"updatedAt\": \"2024-02-07 08:13:49\",\n        \"updatedBy\": {\n            \"id\": 222547,\n            \"firstname\": \"dev\",\n            \"lastname\": \"helpwise\",\n            \"email\": \"dev@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n            \"displayName\": \"dev helpwise\",\n            \"role\": 0,\n            \"settings\": null,\n            \"permissions\": null,\n            \"billing\": null,\n            \"accountId\": 222547\n        }\n    },\n    \"message\": \"Custom field updated successfully.\",\n    \"status\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Pin Code\",\n    \"description\":\"Pin code of customer location\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/customFields",
+								"description": "You can use this endpoint to create a new custom field.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| name(required) | string | name of a custom field |\n| description(optional) | string | description of custom field |"
+							},
+							"response": [
+								{
+									"name": "Create",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\":\"Pin Code\",\n    \"description\":\"Pin code of customer location\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://apis.helpwise.io/customFields"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 204522,\n        \"name\": \"Pincode\",\n        \"description\": \"Pin code of customer location\",\n        \"value\": \"\",\n        \"inboxIds\": [\n           {\n                \"id\": 221217,\n                \"name\": \"Dialpad Channel\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221218,\n                \"name\": \"RingCentral Text\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221283,\n                \"name\": \"Custom Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221284,\n                \"name\": \"Twilio Calling Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221143,\n                \"name\": \"Dialog360 Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221198,\n                \"name\": \"Dev Outlook Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221138,\n                \"name\": \"instagram comment\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221145,\n                \"name\": \"WhatsApp Twilio Inbox\",\n                \"isHidden\": false\n            },\n            {\n                \"id\": 221253,\n                \"name\": \"Demo Inbox\",\n                \"isHidden\": false\n            }\n        ],\n        \"createdBy\": {\n            \"id\": 222547,\n            \"firstname\": \"dev\",\n            \"lastname\": \"helpwise\",\n            \"email\": \"dev@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n            \"displayName\": \"dev helpwise\",\n            \"role\": 0,\n            \"settings\": null,\n            \"permissions\": null,\n            \"billing\": null,\n            \"accountId\": 222547\n        },\n        \"createdAt\": \"2022-11-01 23:27:29\",\n        \"updatedAt\": \"2022-11-01 23:27:29\",\n        \"updatedBy\": {\n            \"id\": 222547,\n            \"firstname\": \"dev\",\n            \"lastname\": \"helpwise\",\n            \"email\": \"dev@helpwise.io\",\n            \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(101,32%,64%)\\\">dh</span>\",\n            \"displayName\": \"dev helpwise\",\n            \"role\": 0,\n            \"settings\": null,\n            \"permissions\": null,\n            \"billing\": null,\n            \"accountId\": 222547\n        }\n    },\n    \"message\": \"Custom field fetched successfully\",\n    \"status\": \"success\"\n}"
+								}
+							]
+						}
+					],
+					"description": "All the custom fields related endpoints listed here. You can basically use these endpoint to create, update, read and delete the custom fields in Helpwise."
+				},
+				{
+					"name": "Contacts",
+					"item": [
+						{
+							"name": "Get Contact",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"connection": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json, text/plain, */*",
+										"disabled": true
+									},
+									{
+										"key": "Accept-Language",
+										"value": "en-GB,en-US;q=0.9,en;q=0.8",
+										"disabled": true
+									},
+									{
+										"key": "Connection",
+										"value": "keep-alive",
+										"disabled": true
+									},
+									{
+										"key": "Cookie",
+										"value": "_hjSessionUser_1980750=eyJpZCI6ImIyMDNkZGZjLTdiZGQtNWFjZi1hYjJiLWQzMmE1ODUwYWQ2ZCIsImNyZWF0ZWQiOjE3MDEwOTI1Njg5MzEsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.1128730810.1704960333; _delighted_web={%22soc7CEH2LGLlIR1D%22:{%22_delighted_fst%22:{%22t%22:%221704960333526%22}%2C%22_delighted_lst%22:{%22t%22:%221703216409000%22%2C%22m%22:{%22token%22:%22COGdOjlmVXI7qs5nmSiynmYt%22}}}}; hw_sid=b03aa5dc3a01d5d9b0c468e017560930143efe56e4d6e17a75207fd9b4b77ac5; hw_te100ab=0; hw_tt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY2MDc0NjgsImhhc2giOiI2YmVmNDkwZTMxMTU2ZTc5ZGYzMmRiYzBkZDhiNDAwOCIsInR5cGUiOiJhY2Nlc3MiLCJleHAiOjE3MDkwMjY2Njh9.Tn2dsoA4dc0nCR_U_r8sDtO-ndBcOUBQd4kQb975gcY; hw_sid_staging=9fb53f00098bd4b1a2d64fa396f1103f402a6479eba686bc1055087fccd54408; hw_tt_staging=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY2MjM5MjAsImhhc2giOiI3NDI0ZjI2NjQ4NWNiZmM5MDMzM2UwZjQ3NWFkYzIxMyIsInR5cGUiOiJhY2Nlc3MiLCJleHAiOjE3MDkwNDMxMjB9.qnpNwarJ8BTuTNBwV6SJZxRoInhqWCyDtcUO_K2FkdA; _vwo_uuid_v2=D7E1B6B06773A4DF7EC7525734C950B13|eb2e4dad9be9dbf810c4674af3c94829; _gid=GA1.2.1332052494.1707115035; _ga_9MDPX07YHD=GS1.1.1707155158.60.1.1707155430.0.0.0; _clck=1n5mnef%7C2%7Cfj1%7C0%7C1471; _ga=GA1.1.1524706179.1701092569; _clsk=ppm72e%7C1707203916251%7C12%7C1%7Cl.clarity.ms%2Fcollect; _ga_JVN1YP0WKB=GS1.1.1707202914.145.1.1707203920.60.0.0; _ga_90XYKCCPCY=GS1.1.1707202914.30.1.1707203941.0.0.0",
+										"disabled": true
+									},
+									{
+										"key": "Origin",
+										"value": "https://staging-vue.helpwise.io",
+										"disabled": true
+									},
+									{
+										"key": "Referer",
+										"value": "https://staging-vue.helpwise.io/",
+										"disabled": true
+									},
+									{
+										"key": "Sec-Fetch-Dest",
+										"value": "empty",
+										"disabled": true
+									},
+									{
+										"key": "Sec-Fetch-Mode",
+										"value": "cors",
+										"disabled": true
+									},
+									{
+										"key": "Sec-Fetch-Site",
+										"value": "same-site",
+										"disabled": true
+									},
+									{
+										"key": "User-Agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+										"disabled": true
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
+										"disabled": true
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0",
+										"disabled": true
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\"",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/contacts/{{contactId}}"
+							},
+							"response": [
+								{
+									"name": "Get Contact",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json, text/plain, */*",
+												"disabled": true
+											},
+											{
+												"key": "Accept-Language",
+												"value": "en-GB,en-US;q=0.9,en;q=0.8",
+												"disabled": true
+											},
+											{
+												"key": "Connection",
+												"value": "keep-alive",
+												"disabled": true
+											},
+											{
+												"key": "Cookie",
+												"value": "_hjSessionUser_1980750=eyJpZCI6ImIyMDNkZGZjLTdiZGQtNWFjZi1hYjJiLWQzMmE1ODUwYWQ2ZCIsImNyZWF0ZWQiOjE3MDEwOTI1Njg5MzEsImV4aXN0aW5nIjp0cnVlfQ==; _gcl_au=1.1.1128730810.1704960333; _delighted_web={%22soc7CEH2LGLlIR1D%22:{%22_delighted_fst%22:{%22t%22:%221704960333526%22}%2C%22_delighted_lst%22:{%22t%22:%221703216409000%22%2C%22m%22:{%22token%22:%22COGdOjlmVXI7qs5nmSiynmYt%22}}}}; hw_sid=b03aa5dc3a01d5d9b0c468e017560930143efe56e4d6e17a75207fd9b4b77ac5; hw_te100ab=0; hw_tt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY2MDc0NjgsImhhc2giOiI2YmVmNDkwZTMxMTU2ZTc5ZGYzMmRiYzBkZDhiNDAwOCIsInR5cGUiOiJhY2Nlc3MiLCJleHAiOjE3MDkwMjY2Njh9.Tn2dsoA4dc0nCR_U_r8sDtO-ndBcOUBQd4kQb975gcY; hw_sid_staging=9fb53f00098bd4b1a2d64fa396f1103f402a6479eba686bc1055087fccd54408; hw_tt_staging=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDY2MjM5MjAsImhhc2giOiI3NDI0ZjI2NjQ4NWNiZmM5MDMzM2UwZjQ3NWFkYzIxMyIsInR5cGUiOiJhY2Nlc3MiLCJleHAiOjE3MDkwNDMxMjB9.qnpNwarJ8BTuTNBwV6SJZxRoInhqWCyDtcUO_K2FkdA; _vwo_uuid_v2=D7E1B6B06773A4DF7EC7525734C950B13|eb2e4dad9be9dbf810c4674af3c94829; _gid=GA1.2.1332052494.1707115035; _ga_9MDPX07YHD=GS1.1.1707155158.60.1.1707155430.0.0.0; _clck=1n5mnef%7C2%7Cfj1%7C0%7C1471; _ga=GA1.1.1524706179.1701092569; _clsk=ppm72e%7C1707203916251%7C12%7C1%7Cl.clarity.ms%2Fcollect; _ga_JVN1YP0WKB=GS1.1.1707202914.145.1.1707203920.60.0.0; _ga_90XYKCCPCY=GS1.1.1707202914.30.1.1707203941.0.0.0",
+												"disabled": true
+											},
+											{
+												"key": "Origin",
+												"value": "https://staging-vue.helpwise.io",
+												"disabled": true
+											},
+											{
+												"key": "Referer",
+												"value": "https://staging-vue.helpwise.io/",
+												"disabled": true
+											},
+											{
+												"key": "Sec-Fetch-Dest",
+												"value": "empty",
+												"disabled": true
+											},
+											{
+												"key": "Sec-Fetch-Mode",
+												"value": "cors",
+												"disabled": true
+											},
+											{
+												"key": "Sec-Fetch-Site",
+												"value": "same-site",
+												"disabled": true
+											},
+											{
+												"key": "User-Agent",
+												"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+												"disabled": true
+											},
+											{
+												"key": "sec-ch-ua",
+												"value": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
+												"disabled": true
+											},
+											{
+												"key": "sec-ch-ua-mobile",
+												"value": "?0",
+												"disabled": true
+											},
+											{
+												"key": "sec-ch-ua-platform",
+												"value": "\"macOS\"",
+												"disabled": true
+											}
+										],
+										"url": "https://apis.helpwise.io/contacts/17864809"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 07 Feb 2024 17:57:20 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "665"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Rate-Limit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-Rate-Limit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "X-Rate-Limit-Reset",
+											"value": "3507"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 17864809,\n    \"firstname\": \"Ashroof\",\n    \"displayName\": \"Ashroof\",\n    \"displayContact\": \"Ashroof\",\n    \"emails\": [\n        \"ashroof@helpwise.io\"\n    ],\n    \"phones\": [],\n    \"isBlocked\": false,\n    \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(72,32%,64%)\\\">A</span>\",\n    \"threads\": [\n        {\n            \"date\": \"2024-02-07T09:45:04Z\",\n            \"subject\": \"Join 100+ Visionaries for the Largest Summit || 15th Edition CX Strategy Summit & Awards 2024 || Tuesday, 27th February 2024 || ITC Maratha, Mumbai.\",\n            \"id\": 118041387,\n            \"mailboxId\": 221302\n        },\n        {\n            \"date\": \"2024-02-06T07:29:12Z\",\n            \"subject\": \"Updated invitation: Engg daily sync @ Weekly from 1pm to 1:30pm on weekdays from Mon Feb 5 to Mon Feb 5 (GMT+5:30) (Uddeshya Upamannyu)\",\n            \"id\": 117876940,\n            \"mailboxId\": 229891\n        },\n        {\n            \"date\": \"2024-02-06T07:29:13Z\",\n            \"subject\": \"Updated invitation: Engg daily sync @ Weekly from 1pm to 1:30pm on weekdays from Mon Feb 5 to Mon Feb 5 (GMT+5:30) (Ashroof A)\",\n            \"id\": 117876938,\n            \"mailboxId\": 221302\n        },\n        {\n            \"date\": \"2024-02-06T07:29:12Z\",\n            \"subject\": \"Updated invitation: Engg daily sync @ Weekly from 1pm to 1:30pm on weekdays from Mon Feb 5 to Mon Feb 5 (GMT+5:30) (Manali Singh)\",\n            \"id\": 117876937,\n            \"mailboxId\": 225808\n        },\n        {\n            \"date\": \"2024-02-05T20:01:30Z\",\n            \"subject\": \"[Helpwise] [Helpwise Support] Received email from Eric: 'Handling multiple dealerships on Helpwise c...\",\n            \"id\": 117753103,\n            \"mailboxId\": 221302\n        }\n    ],\n    \"notes\": [],\n    \"groups\": [\n        {\n            \"id\": 204654,\n            \"name\": \"Testing\"\n        }\n    ],\n    \"customFields\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Contact",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "7b760c32dcb6c3c05107da8010ff08e270d44762",
+										"username": "1c072384a91911a4b21906c54d7bbf9320fd3ca4"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"firstname\": \"John\",\n   \"lastname\": \"Doe\",\n   \"company\": \"Helpwise\",\n   \"jobTitle\": \"Manager\",\n   \"emails\": [\"john.doe@helpwise.io\"],\n   \"phones\": [{\n       \"phoneTxt\": \"+19999999999\",\n       \"phoneNo\": \"+19999999999\",\n       \"type\": \"0\"\n   }],\n   \"customFields\": [{\n     \"id\": 204513,\n     \"value\": \"San Fransisco\",\n     \"name\": \"City\"\n   },\n   {\n     \"id\": 204514,\n     \"value\": \"California\",\n     \"name\": \"State\"\n   }]\n}"
+								},
+								"url": "{{baseUrl}}/contacts/24621644"
+							},
+							"response": [
+								{
+									"name": "Update Contact",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"name": "Content-Type",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"firstname\": \"John\",\n   \"lastname\": \"Doe\",\n   \"company\": \"Helpwise\",\n   \"jobTitle\": \"Manager\",\n   \"emails\": [\"john.doe@helpwise.io\"],\n   \"phones\": [{\n       \"phoneTxt\": \"+19999999999\",\n       \"phoneNo\": \"+19999999999\",\n       \"type\": \"0\"\n   }],\n   \"customFields\": [{\n     \"id\": 204513,\n     \"value\": \"San Fransisco\",\n     \"name\": \"City\"\n   },\n   {\n     \"id\": 204514,\n     \"value\": \"California\",\n     \"name\": \"State\"\n   }]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/contacts"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.18.0 (Ubuntu)"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 07 Feb 2024 18:07:18 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "359"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Rate-Limit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-Rate-Limit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-Rate-Limit-Reset",
+											"value": "3600"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 24621650,\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\",\n    \"displayName\": \"John Doe\",\n    \"emails\": [\n        \"john.doe@helpwise.io\"\n    ],\n    \"phones\": [\n        {\n            \"phoneNo\": \"19999999999\",\n            \"type\": \"0\",\n            \"phoneTxt\": \"19999999999\"\n        }\n    ],\n    \"isBlocked\": false,\n    \"company\": \"Helpwise\",\n    \"jobTitle\": \"Manager\",\n    \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(274,32%,64%)\\\">JD</span>\",\n    \"threads\": null,\n    \"notes\": null,\n    \"groups\": null,\n    \"customFields\": [\n        {\n            \"id\": 204513,\n            \"name\": \"City\",\n            \"value\": \"San Francisco\"\n        },\n        {\n            \"id\": 204514,\n            \"name\": \"State\",\n            \"value\": \"California\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Contact",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"firstname\": \"John\",\n   \"lastname\": \"Doe\",\n   \"company\": \"Helpwise\",\n   \"jobTitle\": \"Manager\",\n   \"emails\": [\"john.doe@helpwise.io\"],\n   \"phones\": [{\n       \"phoneTxt\": \"+19999999999\",\n       \"phoneNo\": \"+19999999999\",\n       \"type\": \"0\"\n   }],\n   \"customFields\": [{\n     \"id\": 204513,\n     \"value\": \"San Fransisco\",\n     \"name\": \"City\"\n   },\n   {\n     \"id\": 204514,\n     \"value\": \"California\",\n     \"name\": \"State\"\n   }]\n}"
+								},
+								"url": "{{baseUrl}}/contacts"
+							},
+							"response": [
+								{
+									"name": "Create Contact",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"name": "Content-Type",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"firstname\": \"John\",\n   \"lastname\": \"Doe\",\n   \"company\": \"Helpwise\",\n   \"jobTitle\": \"Manager\",\n   \"emails\": [\"john.doe@helpwise.io\"],\n   \"phones\": [{\n       \"phoneTxt\": \"+19999999999\",\n       \"phoneNo\": \"+19999999999\",\n       \"type\": \"0\"\n   }],\n   \"customFields\": [{\n     \"id\": 204513,\n     \"value\": \"New York City\",\n     \"name\": \"City\"\n   },\n   {\n     \"id\": 204514,\n     \"value\": \"New York\",\n     \"name\": \"State\"\n   }]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/contacts/24621650"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.18.0 (Ubuntu)"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 07 Feb 2024 18:07:18 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "359"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Rate-Limit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-Rate-Limit-Remaining",
+											"value": "99"
+										},
+										{
+											"key": "X-Rate-Limit-Reset",
+											"value": "3600"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 24621650,\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\",\n    \"displayName\": \"John Doe\",\n    \"emails\": [\n        \"john.doe@helpwise.io\"\n    ],\n    \"phones\": [\n        {\n            \"phoneNo\": \"19999999999\",\n            \"type\": \"0\",\n            \"phoneTxt\": \"19999999999\"\n        }\n    ],\n    \"isBlocked\": false,\n    \"company\": \"Helpwise\",\n    \"jobTitle\": \"Manager\",\n    \"avatarTag\": \"<span class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(274,32%,64%)\\\">JD</span>\",\n    \"threads\": null,\n    \"notes\": null,\n    \"groups\": null,\n    \"customFields\": [\n        {\n            \"id\": 204513,\n            \"name\": \"City\",\n            \"value\": \"New York\"\n        },\n        {\n            \"id\": 204514,\n            \"name\": \"State\",\n            \"value\": \"New York\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Search Contact",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts/search?term=<SEARCH_TERM>&limit=<LIMIT>&offset=<OFFSET>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"search"
+									],
+									"query": [
+										{
+											"key": "term",
+											"value": "<SEARCH_TERM>"
+										},
+										{
+											"key": "limit",
+											"value": "<LIMIT>",
+											"description": "Optional parameter. Default: 50"
+										},
+										{
+											"key": "offset",
+											"value": "<OFFSET>",
+											"description": "Optional parameter"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Search Contact",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{API_KEY}:{API_SECRET}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"John Doe\",\n    \"phone\":\"123456789\",\n    \"email\":\"john.doe@saaslabs.co\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/search?term=john",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"search"
+											],
+											"query": [
+												{
+													"key": "term",
+													"value": "john"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "Text",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"nextPage\": false,\n    \"result\": [\n        {\n            \"firstname\": \"John\",\n            \"middlename\": \"\",\n            \"lastname\": \"Doe\",\n            \"jobTitle\": \"\",\n            \"company\": \"\",\n            \"emails\": [\n                \"john.doe@saaslabs.co\"\n            ],\n            \"phones\": [],\n            \"id\": 1\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "List Contact",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts?limit=<LIMIT>&offset=<OFFSET>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "<LIMIT>",
+											"description": "Optional parameter. Default: 50"
+										},
+										{
+											"key": "offset",
+											"value": "<OFFSET>",
+											"description": "Optional parameter"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List Contact",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{baseUrl}}/contacts"
+									},
+									"_postman_previewlanguage": "Text",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"nextPage\": false,\n    \"results\": [\n        {\n            \"firstname\": \"John\",\n            \"middlename\": \"\",\n            \"lastname\": \"Doe\",\n            \"jobTitle\": \"\",\n            \"company\": \"\",\n            \"emails\": [\n                \"john.doe@saaslabs.co\"\n            ],\n            \"phones\": [],\n            \"id\": 1\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Tags",
+					"item": [
+						{
+							"name": "Get Tags",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"host": true,
+									"user-agent": true,
+									"accept": true,
+									"accept-encoding": true
+								}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": "{{baseUrl}}/tags"
+							},
+							"response": [
+								{
+									"name": "Get Tags",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": "https://apis.helpwise.io/tags"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Tag 1\",\n        \"color\": \"rgb(208, 215, 216)\",\n        \"parentId\": 2,\n        \"hierarchy\": null,\n        \"inbox\": \"Helpwise Support\",\n        \"createdAt\": \"2022-08-31 16:50:38\",\n        \"pinnedBy\": null\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Tag 2\",\n        \"color\": \"#ff3d7f\",\n        \"parentId\": 4,\n        \"hierarchy\": null,\n        \"inbox\": \"Helpwise\",\n        \"createdAt\": \"2022-08-31 06:23:48\",\n        \"pinnedBy\": null\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Get Tag",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": "{{baseUrl}}/tags/{{tagId}}"
+							},
+							"response": [
+								{
+									"name": "Get Tag",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "{{baseUrl}}/tags/{{tagId}}"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Tag 1\",\n    \"color\": \"#FF0000\",\n    \"parentId\": 2,\n    \"hierarchy\": null,\n    \"inbox\": \"Helpwise Support\",\n    \"createdAt\": \"2023-07-04 11:48:04\",\n    \"pinnedBy\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Apply Tags on Conversations",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"threadIds\": [111111,222222],\n    \"tagIds\": [333333,444444]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/tags/apply"
+							},
+							"response": [
+								{
+									"name": "Apply Tags on Conversations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"name": "Content-Type",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"threadIds\": [111111,222222],\n    \"tagIds\": [333333,444444]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/tags/apply"
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"name": "Content-Type",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Tags applied\",\n    \"status\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Remove Tags on Conversations",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"threadIds\": [111111,222222],\n    \"tagIds\": [333333,444444]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/tags/remove"
+							},
+							"response": [
+								{
+									"name": "Remove Tags on Conversations",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"name": "Content-Type",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"threadIds\": [111111,222222],\n    \"tagIds\": [333333,444444]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/tags/remove"
+									},
+									"_postman_previewlanguage": "Text",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Tags removed\",\n    \"status\": \"success\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Reports",
+					"item": [
+						{
+							"name": "Overall Report",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{API_KEY}}:{{API_SECRET}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reports?start=2024-07-30 00:00:00&end=2024-08-30 00:00:00&inboxId=23456&tagId[]=87865&isBusinessHours=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reports"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2024-07-30 00:00:00"
+										},
+										{
+											"key": "end",
+											"value": "2024-08-30 00:00:00"
+										},
+										{
+											"key": "inboxId",
+											"value": "23456"
+										},
+										{
+											"key": "tagId[]",
+											"value": "87865"
+										},
+										{
+											"key": "isBusinessHours",
+											"value": "0"
+										}
+									]
+								},
+								"description": "| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| start(required) | string | start datetime \\[YYYY-MM-DD H:i:s\\] |\n| end(required) | string | end datetime \\[YYYY-MM-DD H:i:s\\] |\n| inboxId(optional) | int | inboxId filter for the report, if not provided then all inboxIds will be considered |\n| TagId\\[\\](optional) | integer array | TagIds filter for the report |\n| isBusinessHours(optional) | int | working hours filter for the report, if not provided then 0 will be considered, otherwise  <br>1 value will considered as working hour report |\n\nYou can use this endpoint to get the **Overall Reports** and **Team Performance Report** of the Helpwise which includes the following data:\n\n**Overall Reports Data**\n\n- Emails per day(Inbound Emails & Outbound Emails)\n    \n- Total new conversations based on date filter\n    \n- Total close conversations based on date filter\n    \n- Assigned conversations based on date filter\n    \n- Emails on hourly basis\n    \n- Busiest hour of the day\n    \n- Busiest day of the week\n    \n\n**Team Performance Data**\n\n- Average Time to Resolution\n    \n- Average Response Time\n    \n- Average First Response Time\n    \n- Customer Satisfaction\n    \n- Performance of Agents which include CSAT, Average Time to Resolution, Average Response Time, Average First Response Time of particular agent"
+							},
+							"response": [
+								{
+									"name": "Report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://apis.helpwise.io/reports?start=2024-07-30 00:00:00&end=2024-08-30 00:00:00&inboxId=23456&tagId[]=87865&isBusinessHours=0",
+											"protocol": "https",
+											"host": [
+												"apis",
+												"helpwise",
+												"io"
+											],
+											"path": [
+												"reports"
+											],
+											"query": [
+												{
+													"key": "start",
+													"value": "2024-07-30 00:00:00"
+												},
+												{
+													"key": "end",
+													"value": "2024-08-30 00:00:00"
+												},
+												{
+													"key": "inboxId",
+													"value": "23456"
+												},
+												{
+													"key": "tagId[]",
+													"value": "87865"
+												},
+												{
+													"key": "isBusinessHours",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"new\": {      // New conversations according to your date filter\n        \"count\": 261,\n        \"percentageDifference\": \"-34\", // Percentage increase or decrease according to previous interval for same date filter\n        \"shouldIncrease\": true\n    },\n    \"archived\": { // Total archived conversations according to your date filter\n        \"count\": 78,\n        \"percentageDifference\": \"-52\",\n        \"shouldIncrease\": true\n    },\n    \"assigned\": { // Total assigned conversations according to your date filter\n        \"count\": 33,\n        \"percentageDifference\": \"6\",\n        \"shouldIncrease\": true\n    },\n    \"messages\": { // Total messages per day according to your date filter\n        \"2024-07-30\": 87,\n        \"2024-07-31\": 85\n    },\n    \"incomingGraph\": { // Total inbound messages per day according to your date filter\n        \"2024-07-30\": 56,\n        \"2024-07-31\": 71\n    },\n    \"outgoingGraph\": { // Total outbound messages per day according to your date filter\n        \"2024-07-30\": 31, \n        \"2024-07-31\": 14\n    },\n    \"avgResponse\": { // Average reponse time \n        \"count\": 9636.67857142857,\n        \"percentageDifference\": \"-61\",\n        \"shouldIncrease\": false\n    },\n    \"avgResolution\": { // Average time to resolution \n        \"count\": 154004.8275862069,\n        \"percentageDifference\": \"-26\",\n        \"shouldIncrease\": false\n    },\n    \"avgFirstResponse\": { // Average first response time\n        \"count\": 7006.736842105263,\n        \"percentageDifference\": \"-65\",\n        \"shouldIncrease\": false\n    },\n    \"CSATgood\": { // Total excellent CSAT score\n        \"count\": 0,\n        \"percentageDifference\": \"0%\",\n        \"shouldIncrease\": true\n    },\n    \"totalCSAT\": { // Total CSAT score\n        \"count\": 0, //this is score value\n        \"percentageDifference\": \"0%\",\n        \"shouldIncrease\": true\n    },\n    \"CSATnormal\": { // Total fair CSAT score\n        \"count\": 0,\n        \"percentageDifference\": \"0%\",\n        \"shouldIncrease\": true\n    },\n    \"CSATbad\": { // Total poor CSAT score\n        \"count\": 0,\n        \"percentageDifference\": \"0%\",\n        \"shouldIncrease\": true\n    },\n    \"users\": [\n        {\n            \"id\": 225970,\n            \"firstname\": \"David\",\n            \"lastname\": \"Miller\",\n            \"email\": \"david@saaslabs.co\",\n            \"avatarTag\": \"\\u003cspan class=\\\"avatar-initial rounded-circle\\\" style=\\\"background-color: hsl(206,32%,64%)\\\"\\u003eVP\\u003c/span\\u003e\",\n            \"avatarUrl\": \"\",\n            \"displayName\": \"David Miller\",\n            \"isAvailable\": 1,\n            \"role\": \"Account Owner\",\n            \"archived\": { // Total conversations archived by this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": true\n            },\n            \"assigned\": { // Total conversations assigned by this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": true\n            },\n            \"outgoing\": { // Total outgoing messages by this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": true\n            },\n            \"avgResponseTime\": { // Average reponse time of this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": false\n            },\n            \"avgResolutionTime\": { // Average time to resolution of this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": false\n            },\n            \"avgFirstResponseTime\": { // Average first response time of this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": false\n            },\n            \"replies\": { // Total replies by this user\n                \"count\": 0,\n                \"percentageDifference\": \"-\",\n                \"shouldIncrease\": true\n            },\n            \"CSATavg\": { // Average CSAT score of this user\n                \"count\": 0,\n                \"percentageDifference\": \"\",\n                \"shouldIncrease\": true\n            }\n        }\n    ],\n    \"inboxType\": \"mail\",\n    \"heatmap\": {\n        \"messagesHeatmap\": [\n            {\n                \"name\": \"Monday\",\n                \"data\": [\n                    {\n                        \"x\": \"0\", // 0-1 hour of monday\n                        \"y\": \"0\" // total messages between 0 to 1 hour \n                    },\n                    .......\n                    {\n                        \"x\": \"23\", // 23-0 hour of monday\n                        \"y\": \"9\" // total messages between 23 to 0 hour \n                    }\n                ]\n            }\n        ],\n        \"lowestHeatmap\": 0, // Lowest total messages count for current week according to date filter\n        \"highestHeatmap\": 21, // Highest total messages count for current week according to date filter\n        \"messagesHeatmapIncoming\": [ // \n            {\n                \"name\": \"Monday\",\n                \"data\": [\n                    {\n                        \"x\": \"0\",\n                        \"y\": \"0\"\n                    },\n                    .......\n                    {\n                        \"x\": \"23\",\n                        \"y\": \"5\"\n                    }\n                ]\n            },\n        ],\n        \"lowestHeatmapIncoming\": 0, // Lowest incoming messages count for current week according to date filter\n        \"highestHeatmapIncoming\": 13, // Highest incoming messages count for current week according to date filter\n        \"messagesHeatmapOutgoing\": [\n            {\n                \"name\": \"Monday\",\n                \"data\": [\n                    {\n                        \"x\": \"0\",\n                        \"y\": \"0\"\n                    },\n                    ......\n                    {\n                        \"x\": \"23\",\n                        \"y\": \"6\"\n                    }\n                ]\n            }\n        ],\n        \"lowestHeatmapOutgoing\": 0,  // Lowest outgoing messages count for current week according to date filter\n        \"highestHeatmapOutgoing\": 9,  // Highest outgoing messages count for current week according to date filter\n        \"busiestDay\": \"Thursday\",  // Busiest day of the week\n        \"busiestTimeOfDay\": 20 // Busiest hour of the day\n    },\n    \"userTimezone\": \"Asia/Kolkata\",\n    \"inboxId\": 204568,\n    \"inboxName\": \"Helpwise Support\",\n    \"isBusinessHoursSetup\": 1,\n    \"hideBusinessHours\": 0,\n    \"percentile\": {\n        \"responseTime\": {\n            \"fifty\": {\n                \"count\": 356,\n                \"percentageDifference\": \"-59\",\n                \"shouldIncrease\": true\n            },\n            \"seventyFive\": {\n                \"count\": 2152,\n                \"percentageDifference\": \"-70\", 0-75 \n                \"shouldIncrease\": true\n            },\n            \"ninety\": {\n                \"count\": 15128,\n                \"percentageDifference\": \"-64\",\n                \"shouldIncrease\": true\n            },\n            \"ninetyFive\": {\n                \"count\": 83551,\n                \"percentageDifference\": \"-52\",\n                \"shouldIncrease\": true\n            }\n        },\n        \"resolutionTime\": {\n            \"fifty\": {\n                \"count\": 6280,\n                \"percentageDifference\": \"-79\",\n                \"shouldIncrease\": true\n            },\n            \"seventyFive\": {\n                \"count\": 31954,\n                \"percentageDifference\": \"-81\",\n                \"shouldIncrease\": true\n            },\n            \"ninety\": {\n                \"count\": 1213060,\n                \"percentageDifference\": \"34\",\n                \"shouldIncrease\": true\n            },\n            \"ninetyFive\": {\n                \"count\": 1213060,\n                \"percentageDifference\": \"23\",\n                \"shouldIncrease\": true\n            }\n        },\n        \"firstResponseTime\": {\n            \"fifty\": {\n                \"count\": 746,\n                \"percentageDifference\": \"-72\",\n                \"shouldIncrease\": true\n            },\n            \"seventyFive\": {\n                \"count\": 6552,\n                \"percentageDifference\": \"-79\",\n                \"shouldIncrease\": true\n            },\n            \"ninety\": {\n                \"count\": 29708,\n                \"percentageDifference\": \"-66\",\n                \"shouldIncrease\": true\n            },\n            \"ninetyFive\": {\n                \"count\": 55740,\n                \"percentageDifference\": \"-68\",\n                \"shouldIncrease\": true\n            }\n        },\n        \"users\": {\n            \"204607\": {\n                \"responseTime\": {\n                    \"fifty\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"seventyFive\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"ninety\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"ninetyFive\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    }\n                },\n                \"resolutionTime\": {\n                    \"fifty\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"seventyFive\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"ninety\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"ninetyFive\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    }\n                },\n                \"firstResponseTime\": {\n                    \"fifty\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"seventyFive\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"ninety\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    },\n                    \"ninetyFive\": {\n                        \"count\": 0,\n                        \"percentageDifference\": \"-\",\n                        \"shouldIncrease\": true\n                    }\n                }\n            }\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Tags Report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/inboxes/{{InboxId}}/reports/tags?start=2024-07-30 00:00:00&end=2024-08-30 00:00:00&inboxId=23456&tagId[]=87865&isBusinessHours=0",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"inboxes",
+										"{{InboxId}}",
+										"reports",
+										"tags"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2024-07-30 00:00:00"
+										},
+										{
+											"key": "end",
+											"value": "2024-08-30 00:00:00"
+										},
+										{
+											"key": "inboxId",
+											"value": "23456"
+										},
+										{
+											"key": "tagId[]",
+											"value": "87865"
+										},
+										{
+											"key": "isBusinessHours",
+											"value": "0"
+										}
+									]
+								},
+								"description": "| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| start(required) | string | start datetime \\[YYYY-MM-DD H:i:s\\] |\n| end(required) | string | end datetime \\[YYYY-MM-DD H:i:s\\] |\n| isBusinessHours(optional) | int | working hours filter for the report, if not provided then 0 will be considered, otherwise  <br>1 value will considered as working hour report |\n\nYou can use this endpoint to get the all tags reporting like average time to resolution, average response time, average first response time and total conversations having this tag."
+							},
+							"response": [
+								{
+									"name": "Tag Report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/inboxes/{{InboxId}}/reports/tags?start=2024-07-30 00:00:00&end=2024-08-30 00:00:00&inboxId=23456&tagId[]=87865&isBusinessHours=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"inboxes",
+												"{{InboxId}}",
+												"reports",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "start",
+													"value": "2024-07-30 00:00:00"
+												},
+												{
+													"key": "end",
+													"value": "2024-08-30 00:00:00"
+												},
+												{
+													"key": "inboxId",
+													"value": "23456"
+												},
+												{
+													"key": "tagId[]",
+													"value": "87865"
+												},
+												{
+													"key": "isBusinessHours",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json",
+											"description": "",
+											"type": "text"
+										}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
+									"body": "{\n    \"tagReportsOutput\": [\n        {\n            \"tag\": {\n                \"id\": 533891,\n                \"name\": \"Inbound Mail\",\n                \"color\": \"rgb(247, 189, 128)\",\n                \"inboxId\": 204568,\n                \"nestedName\": \"\"\n            },\n            \"totalConversations\": 1064,\n            \"totalConversationsPercentage\": 94.92,\n            \"openConversations\": 0,\n            \"responseTime\": 15055,\n            \"resolutionTime\": 11592,\n            \"firstResponseTime\": 8237\n        }\n    ],\n    \"liveTagReportsOutput\": null,\n    \"mailboxId\": 204568,\n    \"totalLiveTagReportsOutput\": 0,\n    \"totalTagReportsOutput\": 10,\n    \"isBusinessHours\": \"1\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Inboxes Report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "",
+								"description": "| PARAMETERS | **TYPE** | DETAILS |\n| --- | --- | --- |\n| start(required) | string | start date |\n| end(required) | string | end date |\n| export | int | 0 is default, 1 for download |\n\nYou can use this endpoint to get the inboxes report."
+							},
+							"response": [
+								{
+									"name": "Inboxes Report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/reports/inboxes?start=2024-07-30&end=2024-08-05&export=0",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"reports",
+												"inboxes"
+											],
+											"query": [
+												{
+													"key": "start",
+													"value": "2024-07-30"
+												},
+												{
+													"key": "end",
+													"value": "2024-08-05"
+												},
+												{
+													"key": "export",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "Text",
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"users\": [\n        {\n            \"id\": 221235,\n            \"accountId\": 222547,\n            \"autoTagging\": 0,\n            \"autoAssignment\": 0,\n            \"awayModeAssignment\": 0,\n            \"type\": 0,\n            \"displayType\": \"mail\",\n            \"emailAddress\": \"help@helpwise.io\",\n            \"displayName\": \"Helpwise Support\",\n            \"forwardingCode\": \"\",\n            \"removeQuotes\": 0,\n            \"twoWaySync\": 0,\n            \"spamStatus\": 0,\n            \"internalAddress\": \"\",\n            \"allView\": 0,\n            \"mentionView\": 0,\n            \"mineView\": 1,\n            \"starredView\": 1,\n            \"tagsView\": 0,\n            \"all\": {\n                \"val\": \"1\",\n                \"conversations\": [\n                    {\n                        \"id\": 51090648,\n                        \"inboxId\": 221235,\n                        \"segmentId\": 204376,\n                        \"type\": \"mail\",\n                        \"messageId\": 204376\n                    }\n                ]\n            },\n            \"assigned\": {\n                \"val\": \"0\",\n                \"conversations\": []\n            },\n            \"archived\": {\n                \"val\": \"0\",\n                \"conversations\": []\n            },\n            \"outgoing\": {\n                \"val\": \"0\",\n                \"conversations\": []\n            },\n            \"replies\": {\n                \"val\": \"0\",\n                \"conversations\": []\n            },\n            \"avgResponseTime\": {\n                \"val\": \"0.000000\",\n                \"conversations\": []\n            },\n            \"avgFirstResponseTime\": {\n                \"val\": \"0.000000\",\n                \"conversations\": []\n            },\n            \"avgResolutionTime\": {\n                \"val\": \"0.000000\",\n                \"conversations\": []\n            },\n            \"oldestConversation\": {\n                \"val\": \"2022-11-22\",\n                \"conversations\": [\n                    {\n                        \"id\": 51090396,\n                        \"inboxId\": 221235,\n                        \"segmentId\": 204376,\n                        \"type\": \"mail\",\n                        \"messageId\": 204376\n                    }\n                ]\n            },\n            \"new\": {\n                \"val\": \"0\",\n                \"conversations\": []\n            }\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Form",
+					"item": [
+						{
+							"name": "Form Submit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"FirstName\":\"Rishabh\",\n    \"LastName\":\"Rawat\",\n    \"Email\":\"rishabh@saaslabs.co\",\n    \"Message\":\"Hello, How can i help you here?\",\n    \"OrderNo\":23780565,\n    \"Address\":\"B-356, Street No-20, Kennedy town, New York\",\n    \"Payment\":\"Done\",\n    \"OrderAmount\":\"299$\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://webhook.helpwise.io/forms/{{your_form_hash}}",
+								"description": "1\\. **Copy the Form Code**:\n\n• After generating the form, you will be provided with HTML code.\n\n• Copy the entire code to inspect it.\n\n2\\. **Locate the Action URL**:\n\n• In the HTML code, search for the action attribute in the\n\ntag. The URL associated with this attribute is where the form data will be sent upon submission.\n\n• Example `form action=\"https://your-helpwise-action-url.com\" method=\"POST\"`\n\n3\\. **Use the Action URL in Your API Endpoint**:\n\n• Take the action URL and use it as the endpoint for your API integration. This will allow you to programmatically submit form data to Helpwise."
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"FirstName\":\"Rishabh\",\n    \"LastName\":\"Rawat\",\n    \"Email\":\"rishabh@saaslabs.co\",\n    \"Message\":\"Hello, How can i help you here?\",\n    \"OrderNo\":23780565,\n    \"Address\":\"B-356, Street No-20, Kennedy town, New York\",\n    \"Payment\":\"Done\",\n    \"OrderAmount\":\"299$\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://webhook.helpwise.io/forms/{{your_form_hash}}"
+									},
+									"_postman_previewlanguage": "Text",
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"description": "Custom form allows you to receive the response from your website into your Helpwise inbox in the form of email. You can create custom form [Helpwise Settings Page](https://app.helpwise.io/settings/forms)\n\nYou can set up this feature by following these steps:\n\n1\\. **Go to the Helpwise Settings Page**: In your Helpwise account, navigate to the settings page where you can manage custom forms.\n\n2\\. **Create a Custom Form**: Look for an option to create a custom form. This form can be embedded on your website, allowing users to submit inquiries, feedback, or any other information.\n\n3\\. **Set Form Forwarding**: Once the form is created, configure it to send form responses to a specific Helpwise inbox. This way, each form submission will appear as an email in your Helpwise inbox.\n\n4\\. **Embed Form on Your Website**: After setting up the form and linking it to your Helpwise inbox, embed it on your website using the code or instructions provided by Helpwise."
+				}
+			]
+		},
+		{
+			"name": "V0",
+			"item": [
+				{
+					"name": "Contact",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 204811\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/contacts/get"
+							},
+							"response": []
+						},
+						{
+							"name": "Search",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Rishabh\",\n    \"phone\":\"918587805615\",\n    \"email\":\"rishabh@saaslabs.co\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/contacts/search",
+								"description": "You can use this endpoint, to fetch all your contacts on Helpwise\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| name (optional) | string | Contacts's first name that you want to save |\n| phone (optional) | string | Phone No to look for |\n| email (optional) | string | Email to look for |"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstname\": \"Rishabh\",\n    \"lastname\": \"Rawat\",\n    \"companyName\": \"Saas Labs\",\n    \"jobTitle\": \"Full Stack Web Developer\",\n    \"emails\": [\"rishabh@saaslabs.co\",\"rishabh@helpwise.io\"],\n    \"phones\": [\n            {\n                \"phone\": \"8587805615\",\n                \"type\": \"1\"\n            },\n            {\n                \"phone\": \"7777878765\",\n                \"type\": \"2\"\n            }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/contacts/create",
+								"description": "You can use this endpoint, to create contacts on Helpwise using your api key and api secret.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| firstname (required) | string | Contacts's first name that you want to save |\n| lastname (optional) | string | Contacts's last name that you want to save |\n| emails (required) | string | Contact's emails addresses associated with your customer contacts. Pass an array of emails. |\n| phones (optional) | Object | Contacts's phones no. Type define the which type of phone no you save. Pass an array of phones no. |\n| companyName (optional) | string | Contacts's company name where he/she works |\n| Job title (optional) | string | Contacts's job title |"
+							},
+							"response": []
+						},
+						{
+							"name": "List",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"order\": \"ASC/DESC\", // Optional\n    \"page\": 2, // Optional. Default: 1\n    \"limit\": 10, // Optional. Should always be less than 100. Default: 50\n    \"offset\": 10 // Optional. Equal to 0 for Page: 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/contacts/list.php"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Chat",
+					"item": [
+						{
+							"name": "Send Chat Message",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mailbox_id\": 204811,\n    \"thread_id\":494141,\n    \"message\":\"Hello Rishabh, How are you?\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/chat/send"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SMS",
+					"item": [
+						{
+							"name": "Send SMS",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mailbox_id\": 204811,\n    \"to\":\"+918587805615\",\n    \"message\":\"Hello Rishabh, How are you?\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/sms/send",
+								"description": "You can use this endpoint, to send your SMS message to your customer on Helpwise using your api key and api secret.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| mailbox_id (required) | number | inbox id of your sms inbox |\n| to (required) | number | customer's number |\n| message | string | body of sms |"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "WhatsApp",
+					"item": [
+						{
+							"name": "List Templates",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mailbox_id\":221143\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/whatsapp/templates/list"
+							},
+							"response": []
+						},
+						{
+							"name": "Send Message",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mailbox_id\": 204811,\n    \"to\":\"+918587805615\",\n    \"message\":\"Hello Rishabh, How are you?\",\n    \"templateId\":204610,\n    \"template_variables_data\":[\"Rishabh\",\"123\",\"transit\",\"23 Dec\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/whatsapp/send",
+								"description": "You can use this endpoint, to send your WhatsApp message to your customer on Helpwise using your api key and api secret. Note:- If you want to use the template message then message field is optional\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| mailbox_id (required) | number | mailbox id of your email |\n| to (required) | string | your customer number |\n| message | string | message body of whatsapp |\n| templateId (optional) | number | template id from template list API |\n| template_variables_data (optional) | array of string | templates variable data |"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Emails",
+					"item": [
+						{
+							"name": "List emails of conversation",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"limit\":2,\n    \"page\":1,\n    \"mailboxId\":204420,\n    \"threadId\":252409\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/emails/list",
+								"description": "You can use this endpoint, to list your Emails in a particular Conversation on Helpwise using your api key and api secret. This api returns a paginated response that you can use to go through your mailboxes.\n\n| PARAMETER | **TYPE** | DETAILS |\n| --- | --- | --- |\n| mailboxId (required) | number | id of the mailbox for which you want to fetch the conversations. |\n| threadId (required) | number | id of the thread for which you want to fetch the conversations. |\n| page | number | page of emails |\n| limit | number |  |"
+							},
+							"response": []
+						},
+						{
+							"name": "Send Email",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"mailbox_id\": 204811,\n\"to\":\"rishabh@saaslabs.co,rishabh@helpwise.io\",\n\"cc\":\"help@helpwise.io\",\n\"subject\":\"Balance your workload from Helpwise\",\n \"reply_to\":\"ben@gmail.com\",\n\"body\":\"<p>Your Message Here!</p>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/emails/send_mail",
+								"description": "You can use this endpoint, to send your email to your customer on Helpwise using your api key and api secret.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| mailbox_id (required) | number | mailbox id of your email |\n| to (required) | string | to email addresses of your customers(comma separated for multiple) |\n| cc | string | cc email addresses of your customers(comma separated for multiple) |\n| subject (required) | string | Subject of the email |\n| email body (required) | string | Body of the email |\n| reply_to | string | reply_to email address |"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Note",
+					"item": [
+						{
+							"name": "Add",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"mailbox_id\":205234,\n\t\"thread_id\":1910985,\n\t\"message\":\"Hi Rishabh! How may I help you?\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/notes/add"
+							},
+							"response": []
+						}
+					],
+					"description": "You can use this endpoint to add note in the conversation.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| mailbox_id (required) | number | mailbox id of your inbox |\n| thread_id (required) | number | conversation id of your mailbox |\n| message(required) | string | body of the note |"
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Me",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"url": "https://app.helpwise.io/dev-apis/users/me"
+							},
+							"response": []
+						},
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mailbox_id\":204390\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/users/list"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Inboxes",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"page\":\"1\",\n\"limit\":\"20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/mailboxes/list"
+							},
+							"response": []
+						},
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{API_KEY}:{API_SECRET}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":12345\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://app.helpwise.io/dev-apis/mailboxes/get"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Conversations",
+					"item": [
+						{
+							"name": "Emails of Conversation (Deprecated)",
+							"item": [
+								{
+									"name": "Get Emails",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{API_KEY}:{API_SECRET}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"mailbox_id\": 204568,\n    \"thread_id\": 10933653\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://app.helpwise.io/dev-apis/threads/get"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "List (Deprecated)",
+							"item": [
+								{
+									"name": "List Conversation",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{API_KEY}:{API_SECRET}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"limit\":5,\n    \"page\":1,\n    \"mailboxId\":204420\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://app.helpwise.io/dev-apis/threads/list"
+									},
+									"response": []
+								}
+							],
+							"description": "You can use this endpoint, to list your conversations on Helpwise using your api key and api secret.\n\n| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| mailboxId (required) | number | id of the mailbox for which you want to fetch the conversations. |\n| labelId (optional) | number | The folder from which conversations need to be fetched. Defaults to 0(inbox). |\n| tabType | string | mine, mention, all, assigned, unassigned, archive, spam, trash |\n| tagId (optional) | number | Provide a tagId if you want to list conversations for a particular tag. |\n| squery (optional) | string | Search query to perform a text based search on emails to list the search results. |\n\nPagination parameters maybe provided\n\n**^**the response data is paginated with a limit of 100 per page - know more about this in our pagination section"
+						},
+						{
+							"name": "Assign",
+							"item": [
+								{
+									"name": "Assign",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "{API_KEY}:{API_SECRET}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"mailbox_id\": 204390,\n    \"thread_id\": 53610037,\n    \"assigned_to\":204377\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://app.helpwise.io/dev-apis/threads/assign"
+									},
+									"response": []
+								}
+							],
+							"description": "| PARAMETERS | TYPE | DETAILS |\n| --- | --- | --- |\n| mailbox_id (required) | number | mailbox id of your inbox |\n| thread_id (required) | number | conversation id of your inbox |\n| assigned_to (required) | number | user id of your Helpwise account |\n| assigned_to=0 | number | If you want to unassign the conversation |\n\nYou can use this endpoint, to assign the conversation to Helpwise's Users in Helpwise account using your api key and api secret."
+						}
+					],
+					"description": "All the conversations related endpoint is listed here where you can perform action( close, spam, trash, move to inbox, delete) on the conversation, get the conversations emails from conversation id and you can also get the inbox's conversations with pagination."
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{API_SECRET}}",
+			"username": "{{API_KEY}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://apis.helpwise.io"
+		},
+		{
+			"key": "API_KEY",
+			"value": ""
+		},
+		{
+			"key": "API_SECRET",
+			"value": ""
+		}
+	]
+}
